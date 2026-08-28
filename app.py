@@ -16,6 +16,11 @@ app = FastAPI()
 client = Voyager(liAt, jsessionId)
 
 
+@app.get("/")
+def root() -> dict:
+    return {"message": "LinkedIn profile scraper API. Use GET /profiles?url=<linkedin-profile-url>"}
+
+
 @app.get("/profiles")
 def readProfile(url: str) -> dict:
     try:
